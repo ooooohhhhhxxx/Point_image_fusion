@@ -33,8 +33,8 @@ def traintoyolo(dataDir, outpath):
             id = csv_list[7]
             x = str(((o_x2 - o_x1) / 2 + o_x1) / image_width)
             y = str(((o_y2 - o_y1) / 2 + o_y1) / image_hight)
-            w = str(o_w / image_width)
-            h = str(o_h / image_hight)
+            w = str((o_x2 - o_x1) / image_width)
+            h = str((o_y2 - o_y1) / image_hight)
             data = {'id': id, 'x': x, 'y': y, 'w': w, 'h': h}
             out = pd.DataFrame(data, index=[0])
             path = outpath + label + '_' + filename + '.txt'
@@ -60,8 +60,8 @@ def valtoyolo(valpath, valsavepath):
         id = csv_list[7]
         x = str(((o_x2 - o_x1) / 2 + o_x1) / image_width)
         y = str(((o_y2 - o_y1) / 2 + o_y1) / image_hight)
-        w = str(o_w / image_width)
-        h = str(o_h / image_hight)
+        w = str((o_x2 - o_x1) / image_width)
+        h = str((o_y2 - o_y1) / image_hight)
         data = {'id': id, 'x': x, 'y': y, 'w': w, 'h': h}
         out = pd.DataFrame(data, index=[0])
         path = valsavepath + filename + '.txt'
@@ -72,8 +72,8 @@ def valtoyolo(valpath, valsavepath):
 
 if __name__ == '__main__':
     datapath = '/Users/jinxuanchen/Desktop/test/origin/GTSRB/Final_Training/Images/'
-    savepath = '/Users/jinxuanchen/Desktop/test/label/train/'
+    savepath = '/Users/jinxuanchen/Desktop/test/dataset/labels/train/'
     val_csv = '/Users/jinxuanchen/Desktop/test/origin/GT-final_test.csv'
-    val_savepath = '/Users/jinxuanchen/Desktop/test/label/val/'
-    traintoyolo(datapath, savepath)
-    # valtoyolo(val_csv, val_savepath)
+    val_savepath = '/Users/jinxuanchen/Desktop/test/dataset/labels/val/'
+    # traintoyolo(datapath, savepath)
+    valtoyolo(val_csv, val_savepath)
