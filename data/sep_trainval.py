@@ -13,3 +13,4 @@ def get_filelist(dataDir, outpath):
 datadir = r'C:\Users\JinXuanchen\Documents\Point_image_fusion\datasets\images\val'
 outpath = r'C:\Users\JinXuanchen\Documents\Point_image_fusion\datasets\val.txt'
 get_filelist(datadir, outpath)
+a=1
