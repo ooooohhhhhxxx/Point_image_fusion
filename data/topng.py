@@ -5,13 +5,13 @@ import pandas as pd
 from PIL import Image
 
 train_path = (
-    '/Volumes/Jin/Data/GTSRB/GTSRB_Final_Training_Images/GTSRB/Final_Training/Images/'
+    r'C:\Users\JinXuanchen\Downloads\GTSRB_Final_Training_Images\GTSRB\Final_Training\Images/'
 )
 
-test_path = '/Volumes/Jin/Data/GTSRB/GTSRB_Final_Test_Images/GTSRB/Final_Test/Images/'
+test_path = r'C:\Users\JinXuanchen\Downloads\GTSRB_Final_Test_Images\GTSRB\Final_Test\Images/'
 
-train_outpath = '/Volumes/Jin/Data/GTSRB/convert_png/train/'
-test_outpath = '/Volumes/Jin/Data/GTSRB/convert_png/test/'
+train_outpath = r'C:\Users\JinXuanchen\Documents\Point_image_fusion\datasets\images\train/'
+test_outpath = r'C:\Users\JinXuanchen\Documents\Point_image_fusion\datasets\images\val/'
 
 
 def convertTrainData(dataDir, saveDir):

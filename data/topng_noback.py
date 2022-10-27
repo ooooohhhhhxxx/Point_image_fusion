@@ -5,13 +5,13 @@ import pandas as pd
 from PIL import Image
 
 train_path = (
-    '/Volumes/Jin/Data/GTSRB/GTSRB_Final_Training_Images/GTSRB/Final_Training/Images/'
+    r'C:\Users\JinXuanchen\Downloads\GTSRB_Final_Training_Images\GTSRB\Final_Training\Images/'
 )
 
 test_path = r'C:\Users\JinXuanchen\Downloads\GTSRB_Final_Test_Images\GTSRB\Final_Test\Images/'
 
-train_outpath = '/Volumes/Jin/Data/GTSRB/convert_png/train/'
-test_outpath = r'C:\Users\JinXuanchen\Documents\Point_image_fusion\datasets\images\val_noback/'
+train_outpath = r'C:\Users\JinXuanchen\Documents\Point_image_fusion\datasets\images\train/'
+test_outpath = r'C:\Users\JinXuanchen\Documents\Point_image_fusion\datasets\images\val/'
 
 
 def convertTrainData(dataDir, saveDir):
@@ -41,13 +41,16 @@ def convertTrainData(dataDir, saveDir):
             # ]
             # img = img.crop(box)
 
-            bg = Image.new('RGB', (200, 200), (0, 0, 0))
-            bg.paste(img, (0, 0))
+            # bg = Image.new('RGB', (200, 200), (0, 0, 0))
+            # bg.paste(img, (0, 0))
 
             filename, _ = csv_data_list[0].split(".")
-            one_save_path = oneSaveDir + filename + '.png'
+            one_save_path = saveDir + label+'_' + filename + '.png'
             # oneSaveDir + '' + '.png'
-            bg.save(one_save_path)
+            img.save(one_save_path)
+            print(filename, ' done')
+        print(label, ' done')
+    print('train done')
 
 
 def convertTestData(dataDir, saveDir):
@@ -80,7 +83,9 @@ def convertTestData(dataDir, saveDir):
         filename, _ = csv_data_list[0].split(".")
         one_save_path = saveDir + filename + '.png'
         img.save(one_save_path)
+        print(filename, ' done')
+    print('train done')
 
 
-# convertTrainData(dataDir=train_path, saveDir=train_outpath)
-convertTestData(dataDir=test_path, saveDir=test_outpath)
+convertTrainData(dataDir=train_path, saveDir=train_outpath)
+# convertTestData(dataDir=test_path, saveDir=test_outpath)
