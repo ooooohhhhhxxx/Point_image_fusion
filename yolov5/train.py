@@ -165,6 +165,7 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
     ema = ModelEMA(model) if RANK in {-1, 0} else None
 
     # Resume
+    # best_fitness, start_epoch = 0.0, 0
     best_fitness, start_epoch = 0.0, 0
     if pretrained:
         if resume:
