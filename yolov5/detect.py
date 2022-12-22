@@ -58,7 +58,7 @@ def run(
         max_det=1000,  # maximum detections per image
         device='',  # cuda device, i.e. 0 or 0,1,2,3 or cpu
         view_img=False,  # show results
-        save_txt=False,  # save results to *.txt
+        save_txt=True,  # save results to *.txt
         save_conf=False,  # save confidences in --save-txt labels
         save_crop=False,  # save cropped prediction boxes
         nosave=False,  # do not save images/videos
@@ -93,8 +93,56 @@ def run(
     # Load model
     device = select_device(device)
     model = DetectMultiBackend(weights, device=device, dnn=dnn, data=data, fp16=half)
-    stride, names, pt = model.stride, model.names, model.pt
+    stride, names1, pt = model.stride, model.names, model.pt
     imgsz = check_img_size(imgsz, s=stride)  # check image size
+    
+    names = {
+    0: 'speed limit_20',
+    1: 'speed limit_30',
+    2: 'speed limit_50',
+    3: 'speed limit_60',
+    4: 'speed limit_70',
+    5: 'speed limit_80',
+    6: 'end speed limit_80',  # end of speed limit
+    7: 'speed limit_100',
+    8: 'speed limit_120',
+    9: 'No passing',  # 禁止超车
+    10: 'No passing over 3.5t',  # 禁止超重3.5吨
+    11: 'Priority',  # 优先行驶
+    12: 'Priority road',  # 干道先行
+    13: 'Giveway',  # 让路
+    14: 'Stop',  # 停止
+    15: 'Road closed',  # 道路封闭
+    16: 'Prohibit over 3.5t',
+    17: 'Do not enter',
+    18: 'General danger',
+    19: 'Curve_left',
+    20: 'Curve_right',
+    21: 'Double curve',
+    22: 'Uneven road surface',
+    23: 'Slippery',
+    24: 'Road narrows',
+    25: 'Roadworks',
+    26: 'Traffic signals ahead',
+    27: 'Pedestrian crossing',
+    28: 'Watch for children',
+    29: 'Bicycle crossing',
+    30: 'Ice/snow',
+    31: 'Wild animal crossing',
+    32: 'End all restrictions',
+    33: 'Turn right ahead',
+    34: 'Turn left ahead',
+    35: 'Ahead only',
+    36: 'Ahead or turn only',
+    37: 'Ahead or turn only',
+    38: 'Pass by on right',
+    39: 'Pass by on left',
+    40: 'Roundabout',
+    41: 'End no passing zone',
+    42: 'End no passing zone for trucks',
+    }
+
+    names
 
     # Dataloader
     bs = 1  # batch_size
@@ -215,16 +263,18 @@ def run(
 
 def parse_opt():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', nargs='+', type=str, default=ROOT / 'yolov5s.pt', help='model path or triton URL')
-    parser.add_argument('--source', type=str, default=ROOT / 'data/images', help='file/dir/URL/glob/screen/0(webcam)')
+    # parser.add_argument('--weights', nargs='+', type=str, default=ROOT / 'yolov5s.pt', help='model path or triton URL')
+    parser.add_argument('--weights', nargs='+', type=str, default='/Users/jinxuanchen/Files_Local/Point_image_fusion/yolov5/runs/train/base_m67/weights/best.pt', help='model path or triton URL')
+    # parser.add_argument('--source', type=str, default=ROOT / 'data/images', help='file/dir/URL/glob/screen/0(webcam)')
+    parser.add_argument('--source', type=str, default='/Users/jinxuanchen/Downloads/2011_09_26-13/2011_09_26_drive_0096_sync/image_02/data', help='file/dir/URL/glob/screen/0(webcam)')
     parser.add_argument('--data', type=str, default=ROOT / 'data/coco128.yaml', help='(optional) dataset.yaml path')
-    parser.add_argument('--imgsz', '--img', '--img-size', nargs='+', type=int, default=[640], help='inference size h,w')
-    parser.add_argument('--conf-thres', type=float, default=0.25, help='confidence threshold')
-    parser.add_argument('--iou-thres', type=float, default=0.45, help='NMS IoU threshold')
+    parser.add_argument('--imgsz', '--img', '--img-size', nargs='+', type=int, default=[1280], help='inference size h,w')
+    parser.add_argument('--conf-thres', type=float, default=0.8, help='confidence threshold')
+    parser.add_argument('--iou-thres', type=float, default=0.8, help='NMS IoU threshold')
     parser.add_argument('--max-det', type=int, default=1000, help='maximum detections per image')
     parser.add_argument('--device', default='', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
     parser.add_argument('--view-img', action='store_true', help='show results')
-    parser.add_argument('--save-txt', action='store_true', help='save results to *.txt')
+    parser.add_argument('--save-txt', action='store_true', default = 'true',help='save results to *.txt')
     parser.add_argument('--save-conf', action='store_true', help='save confidences in --save-txt labels')
     parser.add_argument('--save-crop', action='store_true', help='save cropped prediction boxes')
     parser.add_argument('--nosave', action='store_true', help='do not save images/videos')

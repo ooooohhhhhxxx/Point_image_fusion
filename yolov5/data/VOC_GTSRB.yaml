@@ -18,49 +18,49 @@ val: # val images (relative to 'path')  4952 images
 
 # Classes
 names:
-  0: x20
-  1: x30
-  2: x50
-  3: x60
-  4: x70
-  5: x80
-  6: xq80
-  7: x100
-  8: x120
-  9: jzcc  # 禁止超车
-  10: jzcz  #禁止超重3.5吨
-  11: yxxs  #优先行驶
-  12: gdxx  #干道先行
-  13: giveway     #让路
-  14: stop    #停止
-  15: dlfb   #道路封闭
-  16: hc
-  17: a17
-  18: a18
-  19: a19
-  20: a20
-  21: a21
-  22: a22
-  23: a23
-  24: a24
-  25: a25
-  26: a26
-  27: a27
-  28: a28
-  29: a29
-  30: a30
-  31: a31
-  32: a32
-  33: a33
-  34: a34
-  35: a35
-  36: a36
-  37: a37
-  38: a38
-  39: a39
-  40: a40
-  41: a41
-  42: a42
+  0: speed limit_20  # speed limit
+  1: speed limit_30
+  2: speed limit_50
+  3: speed limit_60
+  4: speed limit_70
+  5: speed limit_80
+  6: end speed limit_80  #end of speed limit
+  7: speed limit_100
+  8: speed limit_120
+  9: No passing  # 禁止超车
+  10: No passing over 3.5t  #禁止超重3.5吨
+  11: Priority  #优先行驶
+  12: Priority road  #干道先行
+  13: Giveway     #让路
+  14: Stop    #停止
+  15: Road closed   #道路封闭
+  16: Prohibit over 3.5t
+  17: Do not enter
+  18: General danger
+  19: Curve_left
+  20: Curve_right
+  21: Double curve
+  22: Uneven road surface
+  23: Slippery
+  24: Road narrows
+  25: Roadworks
+  26: Traffic signals ahead
+  27: Pedestrian crossing
+  28: Watch for children
+  29: Bicycle crossing
+  30: Ice/snow
+  31: Wild animal crossing
+  32: End all restrictions
+  33: Turn right ahead
+  34: Turn left ahead
+  35: Ahead only
+  36: Ahead or turn only
+  37: Ahead or turn only
+  38: Pass by on right
+  39: Pass by on left
+  40: Roundabout
+  41: End no passing zone
+  42: End no passing zone for trucks
 
 
 # Download script/URL (optional) ---------------------------------------------------------------------------------------
