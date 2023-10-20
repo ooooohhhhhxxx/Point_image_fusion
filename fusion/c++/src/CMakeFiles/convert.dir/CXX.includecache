@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/media/psf/Home/Files_Local/Point_image_fusion/fusion/c++/src/convert.cpp
+pcl/io/pcd_io.h
+-
+pcl/common/common/transforms.h
+-
+pcl/registration/ndt.h
+-
+tf/tf.h
+-
+ros/ros.h
+-
+iostream
+-
+string
+-
+vector
+-
+fstream
+-
+sstream
+-
+boost/filesystem.hpp
+-
+

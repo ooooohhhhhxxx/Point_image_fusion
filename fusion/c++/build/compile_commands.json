@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/media/psf/Home/Files_Local/Point_image_fusion/fusion/c++/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++    -g   -o CMakeFiles/convert.dir/convert.cpp.o -c /media/psf/Home/Files_Local/Point_image_fusion/fusion/c++/convert.cpp",
+  "file": "/media/psf/Home/Files_Local/Point_image_fusion/fusion/c++/convert.cpp"
+}
+]
