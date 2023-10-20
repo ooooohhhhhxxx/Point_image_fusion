@@ -56,22 +56,34 @@ def get_file(path):
     return names
 
 if __name__ == '__main__':
-    pcdpath = '/Users/jinxuanchen/Files_Local/Point_image_fusion/kittidata/2011_09_26_drive_0096_sync/outpoints/'
-    savepath = '/Users/jinxuanchen/Files_Local/Point_image_fusion/kittidata/2011_09_26_drive_0096_sync/euclidean_cluster_points/'
+    pcdpath = '/Users/jinxuanchen/Files_Local/Point_image_fusion/kittidata/odometry/sequences/00/0_out/2_out_pcd/'
+    savepath = '/Users/jinxuanchen/Files_Local/Point_image_fusion/kittidata/odometry/sequences/00/0_out/3_euclidean_cluster/'
     filenames = get_file(pcdpath)
+    full_clusters_cloud = o3d.geometry.PointCloud()
     for filename in filenames:
         path = pcdpath + filename + '.pcd'
-        outpath = savepath +filename + '.pcd'
+        
         # --------------------------加载点云数据------------------------------
         pcd = o3d.io.read_point_cloud(path)
-        a = pcd.points.intensities
+        # pcd_l = pcd.to_legacy()
+        # a = pcd_l
+        # o3d.visualization.draw_geometries([pcd])
         # ---------------------------欧式聚类--------------------------------
         ec = euclidean_cluster(pcd, tolerance=0.2, min_cluster_size=10, max_cluster_size=100000)
         # -------------------------聚类结果分类保存---------------------------
-
+        
+        ef_point =  o3d.geometry.PointCloud()
         for i in range(len(ec)):
             ind = ec[i]
             clusters_cloud = pcd.select_by_index(ind)
             
+            outpath = savepath +filename + '_' + str(i) + '.pcd'
+            
             o3d.io.write_point_cloud(outpath, clusters_cloud)
-            print(filename + ' done!')
+            
+            ef_point = ef_point + clusters_cloud
+        print(filename + ' done!')
+        
+        
+        full_clusters_cloud += ef_point  
+    o3d.io.write_point_cloud('/Users/jinxuanchen/Files_Local/Point_image_fusion/kittidata/odometry/sequences/00/0_out/full_cluster.pcd', full_clusters_cloud)

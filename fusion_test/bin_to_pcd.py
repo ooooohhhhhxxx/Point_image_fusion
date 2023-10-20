@@ -73,7 +73,7 @@ def main(bin_path, pcd_path):
         a = example[:,2]
         # # From numpy to Open3D
         # pcd = o3d.geometry.PointCloud()
-        pcd.points = o3d.open3d.utility.Vector3dVector(example)
+        # pcd.points = o3d.open3d.utility.Vector3dVector(example)
         # pcd.normals = o3d.open3d.utility.DoubleVector(example[:3])
         # # o3d.io.write_point_cloud(savepath,pcd)
     
@@ -82,6 +82,6 @@ def main(bin_path, pcd_path):
         print(name,' done!')
 
 if __name__ == "__main__":
-    bin_path = '/Users/jinxuanchen/Files_Local/Point_image_fusion/fusion_test/pcd/378/pc/'
-    pcd_path = '/Users/jinxuanchen/Files_Local/Point_image_fusion/fusion_test/pcd/378/'
+    bin_path = '/Users/jinxuanchen/Files_Local/Point_image_fusion/kittidata/odometry/sequences/00/velodyne/'
+    pcd_path = '/Users/jinxuanchen/Files_Local/Point_image_fusion/kittidata/odometry/sequences/00/point_txt/'
     main(bin_path, pcd_path)

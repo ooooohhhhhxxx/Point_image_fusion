@@ -30,7 +30,7 @@ names:
   9: No passing  # 禁止超车
   10: No passing over 3.5t  #禁止超重3.5吨
   11: Priority  #优先行驶
-  12: Priority road  #干道先行
+  12: Prioity road  #干道先行
   13: Giveway     #让路
   14: Stop    #停止
   15: Road closed   #道路封闭
